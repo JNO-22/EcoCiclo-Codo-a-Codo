@@ -1,0 +1,159 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #1F6649;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-weight: 300;
+  padding: 2rem 6rem;
+  position: fixed;
+  width: 100%;
+  background-color: #4141413f;
+}
+
+#header-button {
+  display: none;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.header-menu {
+  display: flex;
+  gap: 30px;
+}
+
+.header-menu li {
+  list-style: none;
+  font-size: 1.4rem;
+}
+
+
+.header-menu li:hover {
+  cursor: pointer;
+  color: #9fc131;
+}
+
+/* end header --  main */
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding: 0 8rem;
+}
+
+.about-container {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 0 4rem;
+}
+.main-images {
+  display: flex;
+  flex-direction: row;
+  gap: 8rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10rem;
+}
+.main-images-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* end main --  section*/
+.promise-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 5rem 12rem;
+  margin: 0 -8rem;
+  width: auto;
+  background-image: url(../assets/REcycle.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  background-color: #2A2A43;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 1200px) {
+ 
+  .main-images {
+    display: flex;
+    gap: 8rem;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  #grupo-recoleccion {
+    width: 20rem;
+  }
+
+
+  header {
+    width: auto;
+    background-color: transparent;
+    right:  0;
+    padding: 1rem 3rem;
+  }
+
+
+  #header-button {
+    display: block;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    position: fixed;
+    right: 4rem;
+    top: 2rem;
+    color: #f5f5f5;
+    font-size: 2rem;
+  }
+
+  .header-title {
+    font-size: 6rem;
+  }
+  .header-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #17211d;
+    padding: 2rem;
+    border-radius: 5px;
+    gap: 1rem;
+  }
+}

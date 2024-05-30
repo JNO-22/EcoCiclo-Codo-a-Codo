@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+.back-button {
+  align-self: flex-start;
+  margin: 1rem 2rem;
+}
+.back-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.left-side {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.8);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 1rem;
+}
+input {
+  border: black 1px solid;
+  padding: 1rem;
+}
+textarea {
+  border: black 1px solid;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  resize: none;
+}
+/* Right side */
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  background-color: #49aa2c;
+  color: white;
+  font-size: 18px;
+  gap: 4rem;
+}
+.title {
+  margin-top: 3rem;
+  place-self: center;
+  font-size: 5rem;
+}
+.Text-box {
+  padding: 2rem;
+  width: 90%;
+  min-height: 60%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .left-side {
+    align-items: flex-start;
+  }
+  .right-side {
+    align-items: center;
+  }
+}

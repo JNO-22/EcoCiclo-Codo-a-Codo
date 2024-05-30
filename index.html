@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>EcoCiclo</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <button id="header-button">☰</button>
+      <ul class="header-menu" id="header-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="pages/about.html">Nosotros</a></li>
+        <li><a href="pages/services.html">Servicios</a></li>
+        <li><a href="pages/contact.html">Contáctenos</a></li>
+      </ul>
+      <h1 class="header-title">EcoCiclo</h1>
+    </header>
+
+    <main class="main-content">
+      <div class="main-text">
+        <p class="main-paragraph">
+          <strong>EcoCiclo</strong> es una iniciativa ambiental que busca
+          reducir el impacto de los plásticos en nuestros ecosistemas. A través
+          de prácticas de reciclaje práctico y dinámico, EcoCiclo contribuye a
+          disminuir la contaminación y promover la sostenibilidad. Su objetivo
+          es crear un ciclo virtuoso que beneficie tanto a la naturaleza como a
+          las personas. 🌿♻️
+        </p>
+        <a href="pages/contact.html" class="main-button"
+          >Contactanos para mas informacion</a
+        >
+      </div>
+
+      <div class="main-images">
+        <img
+          src="assets/pexels-rdne-stock-project-7782149.png"
+          id="plant"
+          alt="Planta"
+        />
+        <img
+          src="assets/pexels-ellie-burgin-1661546-4192020.png"
+          id="tree"
+          alt="Tronco de arbol"
+        />
+      </div>
+    </main>
+    <footer>
+      <p class="footer-title"><span style="color: #9fc131">Eco</span>Ciclo</p>
+      <p class="footer-text">
+        Copyright © 2023. Todos los Derechos Reservados.
+      </p>
+    </footer>
+  </body>
+  <script>
+    const headerButton = document.getElementById("header-button");
+    const headerMenu = document.getElementById("header-menu");
+    headerButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (headerMenu.style.display === "flex") {
+        headerMenu.style.display = "none";
+      } else {
+        headerMenu.style.display = "flex";
+      }
+    });
+
+  </script>
+</html>

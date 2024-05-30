@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="services.css"/>
+  </head>
+
+  <body>
+    <header>
+      <ul class="header-menu" id="header-menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="about.html">Nosotros</a></li>
+        <li><a href="services.html">Servicios</a></li>
+        <li><a href="contact.html">Contáctenos</a></li>
+      </ul>
+      <button id="header-button">☰</button>
+    </header>
+
+    <div class="services-container">
+      <div class="services-title" >
+        <p class="services-title-text" style="font-size: 16px; font-weight:400;">Que es lo que hacemos?</p>
+        <h1 class="services-title-text" style="font-size: 32px;">Nuestros Servicios</h1>
+      </div>
+
+      <div class="services-cards">
+        <div class="services-card">
+          <div style="display: flex;  justify-content: start; align-items: center;">
+          <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+          <h3 class="services-card-title">Educación y Talleres</h3>
+        </div>
+          <hr>
+          <p class="services-card-text">
+            organizamos talleres y programas educativos dirigidos a todas las
+            edades, con el objetivo de fomentar la conciencia ambiental y
+            enseñar prácticas de reciclaje efectivas. Nuestros talleres están
+            diseñados para ser interactivos y proporcionar conocimientos
+            prácticos que los participantes puedan aplicar en su vida diaria.
+          </p>
+        </div>
+        <div class="services-card">
+          <div style="display: flex;  justify-content: start; align-items: center;">
+            <i class="fa fa-recycle fa-lg"></i>
+            <h3 class="services-card-title">Reciclaje de Residuos</h3>
+          </div>
+          <hr>
+          <p class="services-card-text">
+            Ofrecemos un sistema de recogida selectiva que clasifica los
+            residuos según su tipo para maximizar la eficiencia del reciclaje.
+            Nuestro equipo especializado se encarga de la recolección de
+            materiales reciclables directamente desde la fuente, asegurando que
+            sean procesados de manera responsable y sostenible.
+          </p>
+        </div>
+        <div class="services-card">
+          <div style="display: flex; justify-content: start; align-items: center;">
+          <i class="fa fa-comments fa-lg" ></i>
+          <h3 class="services-card-title">Consultoría Ambiental</h3>
+        </div>
+          <hr>
+          <p class="services-card-text">
+            Ofrecemos asesoramiento experto en la implementación de prácticas
+            ecológicas en las operaciones diarias, ayudando a reducir la huella
+            de carbono y mejorar la eficiencia energética. Nuestros consultores
+            trabajan estrechamente con cada cliente para desarrollar estrategias
+            personalizadas que se alineen con sus objetivos ambientales y
+            comerciales.
+          </p>
+        </div>
+      </div>
+    </div>
+  <div id="info-container">
+      <div class="image">
+        <img style="width: 50%; " src="../assets/Group 9.png" alt=" EcoCiclo">
+      </div>
+      <div class="info-container">
+        <div class="text-box">
+          <h1 style="font-size: 32px; color:#1F6649;">¿Porque elegirnos?</h1>
+          <p>
+            En EcoCiclo, llevamos más de una década liderando la lucha contra la
+            contaminación plástica. Hemos reducido nuestra huella de carbono en
+            un 30% mediante prácticas ecoamigables y nuestros envases
+            biodegradables han evitado el uso de 500,000 botellas de plástico.
+          </p>
+          <p>
+            Nuestro equipo está disponible las 24 horas para responder tus
+            consultas y brindarte un servicio personalizado. Únete a EcoCiclo y
+            se parte del cambio hacia un mundo más verde. Juntos, cuidamos el
+            planeta.
+          </p>
+        </div>
+        <button></button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const headerButton = document.getElementById("header-button");
+    const headerMenu = document.getElementById("header-menu");
+    headerButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (headerMenu.style.display === "flex") {
+        headerMenu.style.display = "none";
+        headerButton.style.color = "#17211d";
+      } else {
+        headerMenu.style.display = "flex";
+        headerButton.style.color = "#fff";
+      }
+    });
+
+  </script>
+</html>
