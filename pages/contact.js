@@ -24,7 +24,7 @@ function validateForm() {
     for ( let field of data ) {
         const value = document.getElementById(field.id).value;
         const label = document.getElementById(`${field.id}-label`);
-        if (!field.regex.test(value) && value.length == 0) {
+        if (!field.regex.test(value) || value.length == 0) {
             label.style.color = "red";
             label.innerHTML = field.msj;
             error = true;
