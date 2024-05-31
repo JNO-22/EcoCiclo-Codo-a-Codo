@@ -28,7 +28,8 @@ header {
   padding: 2rem 6rem;
   position: fixed;
   width: 100%;
-  background-color: #4141413f;
+  background-color: #41414196;
+  z-index: 10;
 }
 
 .header-menu {
@@ -36,6 +37,11 @@ header {
   display: flex;
   gap: 30px;
   z-index: 10;
+}
+
+.header-menu li:hover {
+  cursor: pointer;
+  color: #c7f040;
 }
 
 #header-button {
