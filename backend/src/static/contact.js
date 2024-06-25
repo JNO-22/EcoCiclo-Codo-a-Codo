@@ -5,6 +5,7 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (validateForm()) {
         submitForm();
+        form.submit();
         form.reset();
         setTimeout(() => {
             window.location.href = "../index.html";
