@@ -6,7 +6,7 @@
     <title>EcoCiclo</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="../static/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,10 +18,10 @@
     <header>
       <button id="header-button">☰</button>
       <ul class="header-menu" id="header-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="pages/about.html">Nosotros</a></li>
-        <li><a href="pages/services.html">Servicios</a></li>
-        <li><a href="backend/src/template/contact.html">Contáctenos</a></li>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="about">Nosotros</a></li>
+        <li><a href="services">Servicios</a></li>
+        <li><a href="contact">Contáctenos</a></li>
       </ul>
       <h1 class="header-title">EcoCiclo</h1>
     </header>
@@ -36,19 +36,15 @@
           es crear un ciclo virtuoso que beneficie tanto a la naturaleza como a
           las personas. 🌿♻️
         </p>
-        <a href="pages/contact.html" class="main-button"
+        <a href="contact.html" class="main-button"
           >Contáctenos para mas información</a
         >
       </div>
 
       <div class="main-images">
+        <img src="../static/imagenes/plant.png" id="plant" alt="Planta" />
         <img
-          src="assets/pexels-rdne-stock-project-7782149.png"
-          id="plant"
-          alt="Planta"
-        />
-        <img
-          src="assets/pexels-ellie-burgin-1661546-4192020.png"
+          src="../static/imagenes/tree.png"
           id="tree"
           alt="Tronco de árbol"
         />
@@ -72,6 +68,5 @@
         headerMenu.style.display = "flex";
       }
     });
-
   </script>
 </html>

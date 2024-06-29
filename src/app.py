@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from werkzeug.utils import secure_filename
 import database as db
 import os
 
@@ -9,7 +8,22 @@ template_dir = os.path.join(template_dir, "src", "template")
 app = Flask(__name__, template_folder=template_dir)
 
 
-@app.route("/form", methods=["POST", "GET"])
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/services")
+def services():
+    usuarios = db.get_usuarios()
+    return render_template("services.html", usuario=usuarios)
+
+@app.route("/contact", methods=["POST", "GET"])
 def form():
     if request.method == "POST":
         nombre = request.form["nombre"]
@@ -18,7 +32,7 @@ def form():
         mensaje = request.form["mensaje"]
         imagen = request.files["imagen"]
         promocion = request.form.get("promocion")
-
+        
         db.add_user(nombre, email, consulta, mensaje, promocion, imagen)
         return render_template("contact.html")
 
@@ -28,5 +42,3 @@ def form():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-print(db.get_usuarios())

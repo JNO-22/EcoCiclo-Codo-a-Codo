@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Contact</title>
     <link
@@ -15,33 +15,42 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="services.css"/>
+    <link rel="stylesheet" href="../static/services.css" />
   </head>
 
   <body>
     <header>
       <ul class="header-menu" id="header-menu">
-        <li><a href="../index.html">Inicio</a></li>
-        <li><a href="about.html">Nosotros</a></li>
-        <li><a href="services.html">Servicios</a></li>
-        <li><a href="contact.html">Contáctenos</a></li>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="about">Nosotros</a></li>
+        <li><a href="services">Servicios</a></li>
+        <li><a href="contact">Contáctenos</a></li>
       </ul>
       <button id="header-button">☰</button>
     </header>
 
     <div class="services-container">
-      <div class="services-title" >
-        <p class="services-title-text" style="font-size: 16px; font-weight:400;">Que es lo que hacemos?</p>
-        <h1 class="services-title-text" style="font-size: 32px;">Nuestros Servicios</h1>
+      <div class="services-title">
+        <p
+          class="services-title-text"
+          style="font-size: 16px; font-weight: 400"
+        >
+          Que es lo que hacemos?
+        </p>
+        <h1 class="services-title-text" style="font-size: 32px">
+          Nuestros Servicios
+        </h1>
       </div>
 
       <div class="services-cards">
         <div class="services-card">
-          <div style="display: flex;  justify-content: start; align-items: center;">
-          <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
-          <h3 class="services-card-title">Educación y Talleres</h3>
-        </div>
-          <hr>
+          <div
+            style="display: flex; justify-content: start; align-items: center"
+          >
+            <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+            <h3 class="services-card-title">Educación y Talleres</h3>
+          </div>
+          <hr />
           <p class="services-card-text">
             organizamos talleres y programas educativos dirigidos a todas las
             edades, con el objetivo de fomentar la conciencia ambiental y
@@ -51,11 +60,13 @@
           </p>
         </div>
         <div class="services-card">
-          <div style="display: flex;  justify-content: start; align-items: center;">
+          <div
+            style="display: flex; justify-content: start; align-items: center"
+          >
             <i class="fa fa-recycle fa-lg"></i>
             <h3 class="services-card-title">Reciclaje de Residuos</h3>
           </div>
-          <hr>
+          <hr />
           <p class="services-card-text">
             Ofrecemos un sistema de recogida selectiva que clasifica los
             residuos según su tipo para maximizar la eficiencia del reciclaje.
@@ -65,11 +76,13 @@
           </p>
         </div>
         <div class="services-card">
-          <div style="display: flex; justify-content: start; align-items: center;">
-          <i class="fa fa-comments fa-lg" ></i>
-          <h3 class="services-card-title">Consultoría Ambiental</h3>
-        </div>
-          <hr>
+          <div
+            style="display: flex; justify-content: start; align-items: center"
+          >
+            <i class="fa fa-comments fa-lg"></i>
+            <h3 class="services-card-title">Consultoría Ambiental</h3>
+          </div>
+          <hr />
           <p class="services-card-text">
             Ofrecemos asesoramiento experto en la implementación de prácticas
             ecológicas en las operaciones diarias, ayudando a reducir la huella
@@ -81,13 +94,17 @@
         </div>
       </div>
     </div>
-  <div id="info-container">
+    <div id="info-container">
       <div class="image">
-        <img style="width: 50%; " src="../assets/Group 9.png" alt=" EcoCiclo">
+        <img
+          style="width: 50%"
+          src="../static/imagenes/Group 9.png"
+          alt=" EcoCiclo"
+        />
       </div>
       <div class="info-container">
         <div class="text-box">
-          <h1 style="font-size: 32px; color:#1F6649;">¿Porque elegirnos?</h1>
+          <h1 style="font-size: 32px; color: #1f6649">¿Porque elegirnos?</h1>
           <p>
             En EcoCiclo, llevamos más de una década liderando la lucha contra la
             contaminación plástica. Hemos reducido nuestra huella de carbono en
@@ -101,9 +118,26 @@
             planeta.
           </p>
         </div>
-        <button></button>
       </div>
     </div>
+
+    <section class="slider-wrapper">
+      <button class="slide-arrow" id="slide-arrow-prev">&#8249;</button>
+
+      <button class="slide-arrow" id="slide-arrow-next">&#8250;</button>
+
+      <ul class="slides-container" id="slides-container">
+        {% for items in usuario %}
+        <li class="slide">
+          <div class="slide-content">
+            <h2 class="slide-title">{{ items['nombre'] }}</h2>
+            <img src="data:image/png;base64,{{ items.imagen }}" alt=" EcoCiclo">
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+
   </body>
   <script>
     const headerButton = document.getElementById("header-button");
@@ -118,6 +152,21 @@
         headerButton.style.color = "#fff";
       }
     });
+
+    const slidesContainer = document.getElementById("slides-container");
+const slide = document.querySelector(".slide");
+const prevButton = document.getElementById("slide-arrow-prev");
+const nextButton = document.getElementById("slide-arrow-next");
+
+nextButton.addEventListener("click", () => {
+  const slideWidth = slide.clientWidth;
+  slidesContainer.scrollLeft += slideWidth;
+});
+
+prevButton.addEventListener("click", () => {
+  const slideWidth = slide.clientWidth;
+  slidesContainer.scrollLeft -= slideWidth;
+});
 
   </script>
 </html>

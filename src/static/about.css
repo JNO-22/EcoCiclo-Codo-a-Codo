@@ -95,7 +95,7 @@ header {
   padding: 5rem 12rem;
   margin: 0 -8rem;
   width: auto;
-  background-image: url(../assets/REcycle.png);
+  background-image: url(../static/imagenes/REcycle.png);
   background-repeat: no-repeat;
   background-size: cover;
 }

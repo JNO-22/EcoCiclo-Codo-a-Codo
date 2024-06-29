@@ -26,7 +26,7 @@ header {
   min-height: 100vh;
   display: grid;
   background: linear-gradient(0deg, rgba(23, 33, 29, 1), rgba(0, 0, 0, 0)),
-    url(assets/Mask\ group.png);
+    url(../static/imagenes/Mask-group.png);
   background-position: center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
