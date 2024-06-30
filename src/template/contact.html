@@ -6,12 +6,15 @@
     <title>Contact</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"/>
-    <link type="text/css" rel="stylesheet" href="../static/contact.css"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="../static/contact.css" />
   </head>
   <body>
     <div class="left-side">
@@ -21,14 +24,14 @@
           <h3>Volver</h3>
         </div>
       </a>
-      
+
       <form action="/contact" method="post" enctype="multipart/form-data">
         <label for="nombre" id="nombre-label">Nombre</label>
         <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" />
         <label for="email" id="email-label">Email</label>
         <input type="text" id="email" name="email" placeholder="Tu email" />
         <label for="consulta">Tipo de consulta</label>
-        <select id="consulta" name="consulta" style="text-align: center;">
+        <select id="consulta" name="consulta" style="text-align: center">
           <option value="sugerencia">Sugerencia</option>
           <option value="pregunta">Pregunta</option>
           <option value="reclamo">
@@ -39,42 +42,59 @@
         <label for="mensaje" id="mensaje-label">Mensaje</label>
         <textarea
           id="mensaje"
-          name="mensaje"  
+          name="mensaje"
           placeholder="Escribe tu mensaje..."
         ></textarea>
         <label for="imagen" id="imagen-label">Imagen</label>
-        <input type="file" id="imagen" name="imagen"/>
+        <input type="file" id="imagen" name="imagen" />
         <div class="promocion">
-            <label for="promocion">¿Deseas recibir promociones?</label>
-            <input type="checkbox" name="promocion" id="promocion" value="1"> 
+          <label for="promocion">¿Deseas recibir promociones?</label>
+          <input type="checkbox" name="promocion" id="promocion" value="1" />
         </div>
         <input type="submit" value="Enviar" />
       </form>
     </div>
 
     <div class="right-side">
-        <h1 class="title"> Contáctenos</h1>
-        <div class="Text-box">
-            <p id="text">
-                Si tienes preguntas, comentarios o deseas reportar plásticos, completa
-                los campos requeridos y estaremos encantados de ayudarte. Envíanos tu
-                reporte y nos pondremos en contacto contigo a través de un correo.
-              </p>
-              <p  style="display: none;" id ="sub-text">.</p>
-              <div class="info" style="display: flex; margin: 0 2rem ; gap: 2rem; align-self: flex-start; align-items: center;">
-                <i class="fa fa-question" style="width: 20px;"></i>
-                <p>
-                    Selecciona el tipo de consulta
-                  </p>
-                </div>
-              
-              <div class="info" style="display: flex; margin: 0 2rem ; gap: 2rem; align-self: flex-start; align-items: center;">
-                <i class="fa fa-camera" style="width: 30px;"></i>
-                <p>
-                  Puedes enviarnos una imagen. Esto es útil para reportar plásticos o para que podamos ayudarte de la mejor manera posible
-                  </p>
-              </div>
-        </div>    
+      <h1 class="title">Contáctenos</h1>
+      <div class="Text-box">
+        <p id="text">
+          Si tienes preguntas, comentarios o deseas reportar plásticos, completa
+          los campos requeridos y estaremos encantados de ayudarte. Envíanos tu
+          reporte y nos pondremos en contacto contigo a través de un correo.
+        </p>
+        <p style="display: none" id="sub-text">.</p>
+        <div
+          class="info"
+          style="
+            display: flex;
+            margin: 0 2rem;
+            gap: 2rem;
+            align-self: flex-start;
+            align-items: center;
+          "
+        >
+          <i class="fa fa-question" style="width: 20px"></i>
+          <p>Selecciona el tipo de consulta</p>
+        </div>
+
+        <div
+          class="info"
+          style="
+            display: flex;
+            margin: 0 2rem;
+            gap: 2rem;
+            align-self: flex-start;
+            align-items: center;
+          "
+        >
+          <i class="fa fa-camera" style="width: 30px"></i>
+          <p>
+            Puedes enviarnos una imagen. Esto es útil para reportar plásticos o
+            para que podamos ayudarte de la mejor manera posible
+          </p>
+        </div>
+      </div>
     </div>
   </body>
   <script type="text/javascript" src="../static/contact.js"></script>

@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request
-import database as db
 import os
+from models.Consultas import Consultas
 
 template_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 template_dir = os.path.join(template_dir, "src", "template")
 
 app = Flask(__name__, template_folder=template_dir)
+
+
+consulta = Consultas()
 
 
 @app.route("/")
@@ -20,25 +23,36 @@ def about():
 
 @app.route("/services")
 def services():
-    usuarios = db.get_usuarios()
-    return render_template("services.html", usuario=usuarios)
+    data = consulta.get_usuarios_reclamos()
+    return render_template("services.html" , data=data)
 
 @app.route("/contact", methods=["POST", "GET"])
 def form():
+
     if request.method == "POST":
         nombre = request.form["nombre"]
         email = request.form["email"]
-        consulta = request.form["consulta"]
+        tipo_consulta = request.form["consulta"]
         mensaje = request.form["mensaje"]
         imagen = request.files["imagen"]
         promocion = request.form.get("promocion")
-        
-        db.add_user(nombre, email, consulta, mensaje, promocion, imagen)
+
+        consulta.add_user(nombre, email, tipo_consulta, promocion, imagen, mensaje)
         return render_template("contact.html")
 
     if request.method == "GET":
         return render_template("contact.html")
 
+@app.route("/modify-data", methods=["POST", "GET"])
+def modify_data():
+    if request.method == "POST":
+        eleccion = request.form["eleccion"]
+        data = request.form["datos"]
+        usuarios = consulta.get_usuarios(eleccion, data)
+        return render_template("modify-data.html", data=usuarios)
+
+    if request.method == "GET":
+        return render_template("modify-data.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

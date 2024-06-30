@@ -61,7 +61,8 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: end;
-  background-color: #49aa2c;
+  background-image: url(../static/imagenes/pattern.png);
+  background-size: cover;
   color: white;
   font-size: 18px;
   gap: 4rem;
