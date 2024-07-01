@@ -9,7 +9,10 @@ class Consultas:
     def __init__(self):
         # editar en python anywhere ### ALERTA
         self.conn = mysql.connector.connect(
-            host="localhost", user="root", password="Zilex189", database="python_db"
+            host="Piters227.mysql.pythonanywhere-services.com",
+            user="Piters227",
+            password="CodoaCodo",
+            database="Piters227$python_db",
         )
         self.cursor = self.conn.cursor()
 
@@ -34,11 +37,15 @@ class Consultas:
         self.cursor.close()
         self.cursor = self.conn.cursor(dictionary=True)
 
-    def get_usuarios(self,eleccion , data):
+    def get_usuarios(self, eleccion, data):
         if eleccion == "name":
-            self.cursor.execute("SELECT * FROM consultas WHERE REGEXP_LIKE (nombre, %s)", (data,))
+            self.cursor.execute(
+                "SELECT * FROM consultas WHERE REGEXP_LIKE (nombre, %s)", (data,)
+            )
         elif eleccion == "mail":
-            self.cursor.execute("SELECT * FROM consultas WHERE REGEXP_LIKE (email, %s)", (data,))
+            self.cursor.execute(
+                "SELECT * FROM consultas WHERE REGEXP_LIKE (email, %s)", (data,)
+            )
         users = list(self.cursor)
         for user in users:
             if user["imagen"] is not None:
@@ -46,7 +53,7 @@ class Consultas:
             else:
                 user["imagen"] = ""
         return users
-    
+
     def get_usuarios_reclamos(self):
         self.cursor.execute("SELECT * FROM consultas WHERE consulta = 'reporte'")
         users = list(self.cursor)
@@ -80,8 +87,8 @@ class Consultas:
             return self.cursor.lastrowid
         except mysql.connector.Error as err:
             print(err)
-    
-    def update_user(self,id,nombre, email, mensaje, imagen,consulta):
+
+    def update_user(self, id, nombre, email, mensaje, imagen, consulta):
         query = "UPDATE consultas SET"
         values = []
         if imagen:
@@ -93,29 +100,13 @@ class Consultas:
                 if value is not None:
                     query += f" {key} = %s,"
                     values.append(value)
-        
+
         query = query[:-1] + f" WHERE id = {id}"
         print(query, tuple(values))
         self.cursor.execute(query, tuple(values))
         self.conn.commit()
         print("Data updated successfully")
-        
-        
-        
-        
-        
-        
-        
-                
-            
-                
-                
-                
-            
-        
-        
-                
-        
+
 
 def file_data(imagen):
     content = imagen.read()
