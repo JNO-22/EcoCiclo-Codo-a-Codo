@@ -21,13 +21,13 @@
 
   <body>
     <header>
-      <ul class="header-menu" id="header-menu">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="about">Nosotros</a></li>
-        <li><a href="services">Servicios</a></li>
-        <li><a href="contact">Contáctenos</a></li>
-      </ul>
-      <button id="header-button">☰</button>
+
+      <div class="back-button">
+        <a href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <p class="back-text">Volver</p>
+      </a>
+      </div>
+
     </header>
 
     <div class="container">
@@ -35,33 +35,113 @@
         <h1>Consultar datos</h1>
         <p>Por favor, escribe el nombre o el email que deseas consultar.</p>
         <form action="/modify-data" method="post" enctype="multipart/form-data">
+        <input type="input" name="form" value="consulta" hidden>
           <select id="eleccion" name="eleccion">
             <option value="name">Nombre</option>
             <option value="mail">Email</option>
           </select>
-          <input type="text" name="datos" id="datos" />
+          <input type="text" name="datos" id="datos" placeholder="Escribe tu busqueda" required />
           <input type="submit" value="Consultar" />
         </form>
       </section>
-      <section class="data-table">
-        <tbody id="data-table">
-          {% for d in data %}
-          <tr>
-            <td>{{d.id}}</td>
-            <td>{{d.usuario}}</td>
-            <td>{{d.nombre}}</td>
-            <td>{{d.email}}</td>
-            <td>
-              <img src="data:image/png;base64,{{ d.imagen }}" alt=" EcoCiclo" />
-            </td>
-            <td>
-              <button class="btn btn-primary btn-sm" id="">Editar</button>
-            </td>
-            <td><a href="#" class="btn btn-danger btn-sm">Borrar</a></td>
-          </tr>
-          {% endfor %}
-        </tbody>
+      {% if data %}
+      <section class="section-table">
+        {% else %}
+      <section class="section-table" style="display: none" hidden>
+        {% endif %}
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Tipo Consulta</th>
+              <th>Mensaje</th>
+              <th>Imagen</th>
+              <th>Modificar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in data %}
+            <tr>
+              <td><div class="table-data">{{d.nombre}}</div></td>
+              <td><div class="table-data">{{d.email}}</div></td>
+              <td><div class="table-data">{{d.consulta}}</div></td>
+              <td><div class="table-data">{{d.mensaje}}</div></td>
+              <td><div class="table-data">
+                <img
+                  src="data:image/png;base64,{{ d.imagen }}"
+                  alt=" EcoCiclo"
+                />
+              </div>
+              </td>
+              <td class="buttons">
+                <button class="btn btn-primary" id="btn-{{d.id}}"  onclick="openModal({{d.id}})">Editar</button>
+              <a href="#" class="btn btn-danger">Borrar</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </section>
     </div>
+    <!-- modal-->
+     <div class="modal">
+      <div class="modal-content">
+      <h1> Modificar datos </h1>
+      <form action="/modify-data" method="post" enctype="multipart/form-data">
+        <input type="input" name="form" value="editar" hidden>
+        <input type="input" id="id" name="id" hidden>
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" placeholder="Escribe tu nombre" required/>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Escribe tu email" required />
+        <label for="consulta">Tipo de consulta</label>
+        <select id="consulta" name="consulta" style="text-align: center">
+        <option value="sugerencia">Sugerencia</option>
+          <option value="pregunta">Pregunta</option>
+          <option value="reporte"> Reporte </option>
+        </select>
+        <label for="message">Message</label>
+        <textarea name="message" id="message" placeholder="Escribe tu mensaje" required></textarea>
+        <label for="imagen">Imagen</label>
+        <input type="file" name="imagen" id="imagen" />
+        <input type="submit" value="Editar" />
+      </form>
+      </div>
+     </div>
+
+    <!-- end modal-->
+
+
   </body>
+ {% if data %}
+  <script type="text/javascript">
+    let myData = {};
+    {% for d in data %}
+       myData[{{d.id|tojson|safe}}] = {{d|tojson|safe}};
+    {% endfor %}
+
+    function openModal(id) {
+      document.querySelector(".modal").style.display = "block";
+      document.querySelector("#id").value = id;
+      document.querySelector("#name").value = myData[id].nombre;
+      document.querySelector("#consulta").value = myData[id].consulta;
+      document.querySelector("#email").value = myData[id].email;
+      document.querySelector("#message").value = myData[id].mensaje;
+    }
+    function closeModal() {
+      document.querySelector(".modal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == document.querySelector(".modal")) {
+        closeModal();
+      }
+    }
+
+
+
+   
+  </script>
+  {% endif %}
 </html>
+

@@ -39,15 +39,10 @@ function validateForm() {
 }
 
 function submitForm() {
-    const subText = document.getElementById("sub-text");
     const text = document.getElementById("text");
     const hidden = document.querySelectorAll(".info");
-    subText.style.display = "block";
-    subText.innerHTML = "Seras redirigido a la pagina principal en 5 segundos.";
     text.innerHTML = "Gracias por tu consulta! Nos pondremos en contacto contigo a la brevedad.";
-    subText.style.color = "#9fc131";
     text.style.fontSize = "3rem";
-    subText.style.textAlign = "center";
     text.style.textAlign = "center";
     hidden.forEach(element => {
         element.style.display = "none";

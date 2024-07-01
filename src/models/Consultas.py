@@ -48,7 +48,7 @@ class Consultas:
         return users
     
     def get_usuarios_reclamos(self):
-        self.cursor.execute("SELECT * FROM consultas WHERE consulta = 'reclamo'")
+        self.cursor.execute("SELECT * FROM consultas WHERE consulta = 'reporte'")
         users = list(self.cursor)
         for user in users:
             if user["imagen"] is not None:
@@ -80,6 +80,41 @@ class Consultas:
             return self.cursor.lastrowid
         except mysql.connector.Error as err:
             print(err)
+    
+    def update_user(self,id,nombre, email, mensaje, imagen,consulta):
+        query = "UPDATE consultas SET"
+        values = []
+        if imagen:
+            imagen = file_data(imagen)
+        else:
+            imagen = None
+        for key, value in locals().items():
+            if key != "self" and key != "query" and key != "values" and key != "id":
+                if value is not None:
+                    query += f" {key} = %s,"
+                    values.append(value)
+        
+        query = query[:-1] + f" WHERE id = {id}"
+        print(query, tuple(values))
+        self.cursor.execute(query, tuple(values))
+        self.conn.commit()
+        print("Data updated successfully")
+        
+        
+        
+        
+        
+        
+        
+                
+            
+                
+                
+                
+            
+        
+        
+                
         
 
 def file_data(imagen):

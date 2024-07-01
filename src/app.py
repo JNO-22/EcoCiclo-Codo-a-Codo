@@ -24,7 +24,8 @@ def about():
 @app.route("/services")
 def services():
     data = consulta.get_usuarios_reclamos()
-    return render_template("services.html" , data=data)
+    return render_template("services.html", data=data)
+
 
 @app.route("/contact", methods=["POST", "GET"])
 def form():
@@ -43,16 +44,33 @@ def form():
     if request.method == "GET":
         return render_template("contact.html")
 
+
 @app.route("/modify-data", methods=["POST", "GET"])
 def modify_data():
     if request.method == "POST":
-        eleccion = request.form["eleccion"]
-        data = request.form["datos"]
-        usuarios = consulta.get_usuarios(eleccion, data)
+        
+        if request.form["form"] == 'editar':
+            id = request.form['id']
+            name = request.form['name']
+            email = request.form['email']
+            message = request.form['message']
+            tipo_consulta = request.form["consulta"]
+            imagen = request.files['imagen']
+            consulta.update_user(id,name, email, message, imagen,tipo_consulta)
+            usuarios = consulta.get_usuarios('name', name)
+            
+        else:
+            eleccion = request.form["eleccion"]
+            data = request.form["datos"]
+            usuarios = consulta.get_usuarios(eleccion, data)
+            
+        
+        
         return render_template("modify-data.html", data=usuarios)
 
     if request.method == "GET":
         return render_template("modify-data.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
