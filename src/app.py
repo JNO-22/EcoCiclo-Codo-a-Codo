@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import os
 from models.Consultas import Consultas
 
+print(os.path.abspath)
+
 template_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 template_dir = os.path.join(template_dir, "src", "template")
 
@@ -29,7 +31,6 @@ def services():
 
 @app.route("/contact", methods=["POST", "GET"])
 def form():
-
     if request.method == "POST":
         nombre = request.form["nombre"]
         email = request.form["email"]
@@ -59,10 +60,16 @@ def modify_data():
             consulta.update_user(id,name, email, message, imagen,tipo_consulta)
             usuarios = consulta.get_usuarios('name', name)
             
-        else:
+        elif request.form["form"] == 'consulta':
             eleccion = request.form["eleccion"]
             data = request.form["datos"]
             usuarios = consulta.get_usuarios(eleccion, data)
+            
+        elif request.form["form"] == 'borrar':
+            name = request.form['name']
+            id = request.form['id']
+            consulta.delete_user(id)
+            usuarios = consulta.get_usuarios('name', name)
             
         
         

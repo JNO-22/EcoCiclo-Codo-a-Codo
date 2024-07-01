@@ -4,15 +4,15 @@ import base64
 
 import mysql.connector.errorcode
 
-
 class Consultas:
     def __init__(self):
         # editar en python anywhere ### ALERTA
         self.conn = mysql.connector.connect(
-            host="Piters227.mysql.pythonanywhere-services.com",
-            user="Piters227",
-            password="CodoaCodo",
-            database="Piters227$python_db",
+            host="localhost",
+            user="root",
+            password="Zilex189",
+            database="python_db",
+            
         )
         self.cursor = self.conn.cursor()
 
@@ -35,9 +35,9 @@ class Consultas:
         )
         self.conn.commit()
         self.cursor.close()
-        self.cursor = self.conn.cursor(dictionary=True)
 
     def get_usuarios(self, eleccion, data):
+        self.cursor = self.conn.cursor(dictionary=True)
         if eleccion == "name":
             self.cursor.execute(
                 "SELECT * FROM consultas WHERE REGEXP_LIKE (nombre, %s)", (data,)
@@ -52,9 +52,11 @@ class Consultas:
                 user["imagen"] = base64.b64encode(user["imagen"]).decode("utf-8")
             else:
                 user["imagen"] = ""
+        self.cursor.close()
         return users
 
     def get_usuarios_reclamos(self):
+        self.cursor = self.conn.cursor(dictionary=True)
         self.cursor.execute("SELECT * FROM consultas WHERE consulta = 'reporte'")
         users = list(self.cursor)
         for user in users:
@@ -62,9 +64,11 @@ class Consultas:
                 user["imagen"] = base64.b64encode(user["imagen"]).decode("utf-8")
             else:
                 user["imagen"] = ""
+        self.cursor.close()
         return users
 
     def add_user(self, nombre, email, consulta, promocion, imagen, mensaje):
+        self.cursor = self.conn.cursor(dictionary=True)
         try:
             if promocion:
                 promocion = 1
@@ -87,8 +91,10 @@ class Consultas:
             return self.cursor.lastrowid
         except mysql.connector.Error as err:
             print(err)
+        self.cursor.close()
 
     def update_user(self, id, nombre, email, mensaje, imagen, consulta):
+        self.cursor = self.conn.cursor(dictionary=True)
         query = "UPDATE consultas SET"
         values = []
         if imagen:
@@ -106,8 +112,15 @@ class Consultas:
         self.cursor.execute(query, tuple(values))
         self.conn.commit()
         print("Data updated successfully")
-
-
+        self.cursor.close()
+        
+    def delete_user(self, id):
+        self.cursor = self.conn.cursor(dictionary=True)
+        self.cursor.execute(f"DELETE FROM consultas WHERE id = {id}")
+        self.conn.commit()
+        print("Data deleted successfully")
+        self.cursor.close()
+        
 def file_data(imagen):
     content = imagen.read()
     return content

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Contact</title>
+    <link rel="icon" type="image/png" href="../static/imagenes/icono.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -15,7 +15,6 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-
     <link type="text/css" rel="stylesheet" href="../static/modify-data.css" />
   </head>
 
@@ -68,15 +67,17 @@
               <td><div class="table-data">{{d.consulta}}</div></td>
               <td><div class="table-data">{{d.mensaje}}</div></td>
               <td><div class="table-data">
+                {% if d.imagen %}
                 <img
                   src="data:image/png;base64,{{ d.imagen }}"
                   alt=" EcoCiclo"
                 />
+                {% endif %}
               </div>
               </td>
               <td class="buttons">
                 <button class="btn btn-primary" id="btn-{{d.id}}"  onclick="openModal({{d.id}})">Editar</button>
-              <a href="#" class="btn btn-danger">Borrar</a></td>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
@@ -86,9 +87,11 @@
     <!-- modal-->
      <div class="modal">
       <div class="modal-content">
+        <div class="modal-header">
       <h1> Modificar datos </h1>
+        </div>
       <form action="/modify-data" method="post" enctype="multipart/form-data">
-        <input type="input" name="form" value="editar" hidden>
+        <input type="input" name="form" id="form" value="editar" hidden>
         <input type="input" id="id" name="id" hidden>
         <label for="name">Nombre</label>
         <input type="text" name="name" id="name" placeholder="Escribe tu nombre" required/>
@@ -104,7 +107,10 @@
         <textarea name="message" id="message" placeholder="Escribe tu mensaje" required></textarea>
         <label for="imagen">Imagen</label>
         <input type="file" name="imagen" id="imagen" />
-        <input type="submit" value="Editar" />
+        <div class="modal-button">
+          <input type="submit" class="btn btn-primary" value="Editar" />
+          <input type="submit" class="btn btn-danger" value="Borrar" onclick="deleteData()" />
+        </div>
       </form>
       </div>
      </div>
@@ -122,12 +128,18 @@
 
     function openModal(id) {
       document.querySelector(".modal").style.display = "block";
+      document.querySelector("#form").value = "editar";
       document.querySelector("#id").value = id;
       document.querySelector("#name").value = myData[id].nombre;
       document.querySelector("#consulta").value = myData[id].consulta;
       document.querySelector("#email").value = myData[id].email;
       document.querySelector("#message").value = myData[id].mensaje;
     }
+
+    function deleteData() {
+      document.querySelector("#form").value = "borrar";
+    }
+
     function closeModal() {
       document.querySelector(".modal").style.display = "none";
     }
