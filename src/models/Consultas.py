@@ -38,14 +38,17 @@ class Consultas:
 
     def get_usuarios(self, eleccion, data):
         self.cursor = self.conn.cursor(dictionary=True)
-        if eleccion == "name":
-            self.cursor.execute(
-                "SELECT * FROM consultas WHERE REGEXP_LIKE (nombre, %s)", (data,)
-            )
-        elif eleccion == "mail":
-            self.cursor.execute(
-                "SELECT * FROM consultas WHERE REGEXP_LIKE (email, %s)", (data,)
-            )
+        if data == "all-data":
+            self.cursor.execute("SELECT * FROM consultas")
+        else:
+            if eleccion == "name":
+                self.cursor.execute(
+                    "SELECT * FROM consultas WHERE REGEXP_LIKE (nombre, %s)", (data,)
+                )
+            elif eleccion == "mail":
+                self.cursor.execute(
+                    "SELECT * FROM consultas WHERE REGEXP_LIKE (email, %s)", (data,)
+                )
         users = list(self.cursor)
         for user in users:
             if user["imagen"] is not None:
