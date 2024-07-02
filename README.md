@@ -3,14 +3,17 @@
 
 Ecocilo es una pagina simulando ser una empresa de ecologia. 
 
-![Header de la pagina](https://github.com/JNO-22/EcoCiclo---Codo-a-Codo/blob/main/assets/screenshot.png)
+![Header de la pagina](src/static/imagenes/screenshot.png)
 
-La pagina de servicios esta optmizada de forma responsiva para celulares y notebooks (width: 600 y 1200)
+## Descripción
+La página utiliza una base de datos SQL para guardar las consultar, preguntas o reportes que realiza la gente.
+- En la pagina de servicios tenemos un apartado para los reportes recientes.
+- Mediante el uso de formularios se puede cargar , editar o borrar datos y se aplican al instante en la pagina.
 
 ## Host
-La pagina esta hosteada en netlify
+La página esta hosteada en PythonAnywhere :
 
-https://dainty-liger-3109da.netlify.app/
+https://piters227.pythonanywhere.com/
 
 
 
